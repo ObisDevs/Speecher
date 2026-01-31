@@ -1,0 +1,1384 @@
+================================================================================
+SPEECHER - BMAD-METHOD AI DEVELOPMENT INSTRUCTIONS
+================================================================================
+
+Project: Speecher - AI Creator Platform for Text-to-Speech & Voice Intelligence
+Framework: BMAD-METHOD (Breakthrough Method of Agile AI Driven Development)
+Version: 6.0.0-Beta.4
+Generated: January 31, 2026
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+1. PROJECT INITIALIZATION & SETUP
+2. BMAD MODULE INSTALLATION
+3. PHASE 1: DISCOVERY & PLANNING (Product Brief → PRD)
+4. PHASE 2: ARCHITECTURE & DESIGN (Technical Foundation)
+5. PHASE 3: DEVELOPMENT SPRINT PLANNING (Epics → Stories)
+6. PHASE 4: IMPLEMENTATION (Story-by-Story Development)
+7. PHASE 5: TESTING & QUALITY ASSURANCE
+8. PHASE 6: DEPLOYMENT & LAUNCH
+9. BMAD AGENTS REFERENCE
+10. WORKFLOW SEQUENCES
+11. BEST PRACTICES & CONVENTIONS
+
+================================================================================
+1. PROJECT INITIALIZATION & SETUP
+================================================================================
+
+STEP 1.1: Install BMAD-METHOD
+------------------------------
+Command:
+  npx bmad-method install
+
+When prompted, select:
+  ✓ BMad Method (BMM) - Core framework [REQUIRED]
+  ✓ Test Architect (TEA) - Enterprise testing [RECOMMENDED]
+  ✓ Creative Intelligence Suite (CIS) - Innovation & design thinking [OPTIONAL]
+  ✗ Game Dev Studio - Not needed
+  ✗ BMad Builder - Not needed initially
+
+Project Type: Select "Web Application"
+Framework: Select "Next.js"
+Database: Select "Supabase"
+
+STEP 1.2: Initialize Project Structure
+---------------------------------------
+After BMAD installation, run:
+  npm create next-app@latest speecher --typescript --app --tailwind=no
+  cd speecher
+  npx bmad-method install (if not already in project)
+
+STEP 1.3: Configure Environment
+--------------------------------
+Create .env.local:
+  NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+  SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+  PYTHON_SERVICE_URL=http://your-vps-ip:8000
+  PYTHON_SERVICE_SECRET=your_secret_key
+  STRIPE_SECRET_KEY=your_stripe_secret
+  STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+
+STEP 1.4: Access BMAD Help
+---------------------------
+At any point, run:
+  /bmad-help
+
+For specific guidance:
+  /bmad-help How should I build a scalable AI web app with Next.js and Python?
+  /bmad-help I just finished the architecture, what should I do next?
+  /bmad-help What's the best way to plan my first sprint?
+
+================================================================================
+2. BMAD MODULE INSTALLATION VERIFICATION
+================================================================================
+
+After installation, verify BMAD is ready:
+
+CHECK 1: Verify .bmad directory exists
+  ls -la .bmad/
+
+Expected structure:
+  .bmad/
+    ├── config/
+    ├── agents/
+    ├── workflows/
+    ├── context/
+    └── modules/
+
+CHECK 2: Test BMAD Help
+  Open your AI IDE (Claude Code, Cursor, Windsurf, etc.)
+  Type: /bmad-help
+  
+Expected response: BMAD should explain current project state and next steps
+
+CHECK 3: List Available Workflows
+  /list-workflows
+
+Expected: Should show 34+ workflows across Discovery, Planning, Architecture, 
+and Implementation phases
+
+================================================================================
+3. PHASE 1: DISCOVERY & PLANNING (Product Brief → PRD)
+================================================================================
+
+WORKFLOW SEQUENCE FOR SPEECHER:
+--------------------------------
+
+STEP 3.1: Product Brief Creation
+---------------------------------
+Command: /product-brief
+
+Instructions to AI:
+  "Create a product brief for Speecher, an AI-powered Text-to-Speech Creator 
+   Platform with three user tiers:
+   
+   1. Quick Jobs (no auth) - One-time use for first-time visitors
+   2. Main Dashboard (authenticated) - Fast, friendly TTS generation
+   3. Creator Studio (authenticated, paid) - Professional editing workspace
+   
+   Target Users:
+   - Casual users (content consumers, students)
+   - Content creators (YouTubers, podcasters, educators)
+   - Professional voice users (audiobook producers, advertisers)
+   
+   Core Problem: 
+   Existing TTS tools are either too simple (robotic voices) or too complex 
+   (require audio engineering skills). Speecher bridges this gap with 
+   progressive complexity.
+   
+   MVP Features:
+   - Quick text-to-speech (no signup)
+   - Dashboard with basic TTS and preset voices
+   - Creator Studio with timeline editing
+   - Voice cloning (consent-based)
+   - Narration-to-video intelligence
+   - Plan tiers: Free, Creator Lite ($19/mo), Creator Pro ($49/mo)
+   
+   Tech Constraints:
+   - Frontend: Next.js 15 (App Router)
+   - Backend: Supabase (auth, database, storage)
+   - AI Processing: Python service on Hostinger VPS
+   - Deployment: Vercel (Next.js) + Docker (Python)
+   
+   Business Model: Freemium SaaS with usage-based limits"
+
+Expected Output: 
+  - Problem statement
+  - User personas
+  - MVP scope
+  - Success metrics
+  - Constraints
+  - Risks
+
+STEP 3.2: Create Full PRD
+--------------------------
+Command: /create-prd
+
+Instructions to AI:
+  "Based on the product brief, create a comprehensive PRD for Speecher.
+   
+   Include:
+   - Detailed user stories for each tier (Quick Jobs, Dashboard, Studio)
+   - Feature specifications with acceptance criteria
+   - Non-functional requirements (performance, security, scalability)
+   - User flows for key journeys:
+     * First-time visitor → Quick Job → Signup conversion
+     * Free user → Dashboard → Upgrade to Lite
+     * Pro user → Studio workflow → Export
+   - Data model requirements
+   - Integration requirements (Stripe, AI models)
+   - Analytics & monitoring needs
+   - Compliance requirements (GDPR, voice cloning consent)
+   
+   Refer to the blueprint document for technical specifications."
+
+Expected Output:
+  - Complete PRD with 20-30 pages
+  - User stories in "As a [user], I want [goal], so that [benefit]" format
+  - Acceptance criteria for each feature
+  - Wireframe descriptions (text-based)
+  - Success metrics and KPIs
+
+STEP 3.3: Risk Assessment (Optional but Recommended)
+-----------------------------------------------------
+Command: /assess-risks
+
+Instructions to AI:
+  "Analyze risks for Speecher project:
+   
+   Technical Risks:
+   - Python service availability (VPS uptime)
+   - AI model performance (generation speed, quality)
+   - Scaling job queue (high concurrent users)
+   - Supabase storage limits
+   
+   Business Risks:
+   - Quick Job abuse (bypassing signup)
+   - Voice cloning misuse (deepfakes)
+   - Conversion rate (Quick Job → Signup)
+   - Churn rate (subscription cancellations)
+   
+   Security Risks:
+   - User data protection
+   - API abuse
+   - Payment fraud
+   - Copyright violations (cloned voices)
+   
+   Provide mitigation strategies for each risk."
+
+Expected Output:
+  - Risk matrix (likelihood × impact)
+  - Mitigation plans
+  - Contingency strategies
+
+================================================================================
+4. PHASE 2: ARCHITECTURE & DESIGN (Technical Foundation)
+================================================================================
+
+WORKFLOW SEQUENCE:
+------------------
+
+STEP 4.1: Create System Architecture
+-------------------------------------
+Command: /create-architecture
+
+Instructions to AI:
+  "Design the system architecture for Speecher based on these constraints:
+   
+   ARCHITECTURE PATTERN (MANDATORY):
+   ┌─────────────────────────────────────┐
+   │  Next.js Frontend (Vercel)          │
+   │  - App Router                       │
+   │  - React Server Components          │
+   │  - Client-side interactions         │
+   └─────────────────────────────────────┘
+              ↓ HTTP/REST API
+   ┌─────────────────────────────────────┐
+   │  Supabase Backend                   │
+   │  - PostgreSQL (Database)            │
+   │  - Auth (Row Level Security)        │
+   │  - Storage (Audio/Assets)           │
+   │  - Realtime (Job updates)           │
+   │  - Edge Functions (Validation)      │
+   └─────────────────────────────────────┘
+              ↓ Webhooks/HTTP
+   ┌─────────────────────────────────────┐
+   │  Python AI Service (Hostinger VPS)  │
+   │  - Celery (Job Queue)               │
+   │  - Redis (Queue Backend)            │
+   │  - TTS Models (Coqui, Bark)         │
+   │  - Voice Cloning (RVC)              │
+   │  - Docker Containers                │
+   └─────────────────────────────────────┘
+   
+   Design:
+   1. Component architecture (Next.js app structure)
+   2. API layer design (REST endpoints)
+   3. Database schema (refer to blueprint)
+   4. Job queue architecture (async processing)
+   5. Authentication flow (Supabase Auth)
+   6. File storage strategy (Supabase Storage buckets)
+   7. Real-time updates (Supabase Realtime subscriptions)
+   8. Error handling & retry logic
+   9. Caching strategy (Redis for jobs, Next.js for pages)
+   10. Monitoring & logging architecture
+   
+   Technology Decisions:
+   - CSS: Vanilla CSS + CSS Modules (NO Tailwind)
+   - State Management: React Context + Zustand
+   - Forms: React Hook Form + Zod validation
+   - API Client: Native fetch + SWR for caching
+   - Testing: Jest + React Testing Library + Playwright
+   - Python: FastAPI + Celery + Pydantic
+   
+   NO MOCK DATA ALLOWED. All data must be:
+   - Generated by real user actions
+   - Stored in Supabase
+   - Retrieved dynamically"
+
+Expected Output:
+  - Architecture diagrams (text descriptions)
+  - Component breakdown
+  - API endpoint specifications
+  - Database schema (DDL statements)
+  - Technology stack rationale
+  - Scalability considerations
+  - Security architecture
+
+STEP 4.2: Database Design
+--------------------------
+Command: /design-database
+
+Instructions to AI:
+  "Create the complete database schema for Speecher using PostgreSQL (Supabase).
+   
+   Core Tables (from blueprint):
+   1. profiles (extends auth.users)
+      - User metadata, plan tier, usage tracking
+      - RLS: Users can only access own profile
+   
+   2. projects
+      - User projects, settings, metadata
+      - RLS: Users can only access own projects
+   
+   3. narration_blocks (Studio timeline)
+      - Block content, voice settings, assets
+      - RLS: Users can only access own blocks
+   
+   4. jobs (AI processing queue)
+      - Job type, status, progress, results
+      - RLS: Users can view/cancel own jobs
+   
+   5. assets (images, videos, audio)
+      - File metadata, storage URLs, tags
+      - RLS: Users can manage own assets
+   
+   6. voice_profiles (cloned voices)
+      - Model data, consent, metadata
+      - RLS: Users can manage own voices
+   
+   7. pronunciation_memory
+      - Word pronunciations, IPA, context
+      - RLS: User-specific pronunciations
+   
+   8. usage_logs (analytics)
+      - Usage tracking for billing
+      - No RLS (internal only)
+   
+   9. subscription_events (Stripe webhooks)
+      - Subscription lifecycle events
+      - No RLS (internal only)
+   
+   Include:
+   - Full DDL (CREATE TABLE statements)
+   - Indexes for performance
+   - Foreign key relationships
+   - RLS policies for each table
+   - Triggers for auto-updates (updated_at, usage tracking)
+   - Functions for complex queries
+   
+   Storage Buckets:
+   - audio-outputs (private)
+   - voice-models (private)
+   - voice-samples (private)
+   - user-assets (private)
+   - temp-uploads (private, auto-delete 24h)
+   - avatars (public)
+   
+   Include storage policies (RLS for storage)"
+
+Expected Output:
+  - Complete SQL schema
+  - ER diagram (text description)
+  - Index strategy
+  - RLS policies
+  - Storage bucket configuration
+
+STEP 4.3: API Design
+--------------------
+Command: /design-api
+
+Instructions to AI:
+  "Design the API layer for Speecher.
+   
+   Next.js API Routes (Route Handlers):
+   
+   1. Authentication
+      POST /api/auth/signup
+      POST /api/auth/login
+      POST /api/auth/logout
+      POST /api/auth/reset-password
+      GET  /api/auth/callback (OAuth)
+   
+   2. Jobs (AI Processing)
+      POST /api/jobs/create
+      GET  /api/jobs/[id]
+      PUT  /api/jobs/[id]/cancel
+      GET  /api/jobs/user (list user's jobs)
+   
+   3. Projects
+      GET    /api/projects (list)
+      POST   /api/projects (create)
+      GET    /api/projects/[id]
+      PUT    /api/projects/[id]
+      DELETE /api/projects/[id]
+      GET    /api/projects/[id]/blocks (narration blocks)
+      POST   /api/projects/[id]/blocks
+      PUT    /api/projects/[id]/blocks/[blockId]
+      DELETE /api/projects/[id]/blocks/[blockId]
+   
+   4. Assets
+      POST   /api/assets/upload
+      GET    /api/assets (list)
+      GET    /api/assets/[id]
+      DELETE /api/assets/[id]
+   
+   5. Voice Profiles
+      POST   /api/voices (create cloned voice)
+      GET    /api/voices (list)
+      GET    /api/voices/[id]
+      DELETE /api/voices/[id]
+   
+   6. Webhooks (Incoming)
+      POST /api/webhooks/stripe (Stripe events)
+      POST /api/webhooks/python-service (Job updates)
+   
+   Python Service API:
+   
+   1. Health Check
+      GET /health
+   
+   2. Job Processing
+      POST /process-job (internal, called by webhook)
+      GET  /job-status/[id]
+   
+   For each endpoint, specify:
+   - HTTP method
+   - Request body schema (Zod)
+   - Response schema
+   - Authentication requirements
+   - Rate limiting rules
+   - Error responses (400, 401, 403, 404, 500)
+   
+   Security:
+   - All endpoints require authentication (except Quick Jobs)
+   - Feature access checks (plan tier validation)
+   - Input validation (Zod schemas)
+   - Rate limiting (via Supabase Edge Functions or Vercel)
+   - CORS configuration"
+
+Expected Output:
+  - API specification document
+  - Request/response schemas
+  - Authentication flow
+  - Error handling strategy
+  - Rate limiting rules
+
+STEP 4.4: UX/UI Design (Optional with CIS Module)
+--------------------------------------------------
+Command: /design-ux
+
+Instructions to AI:
+  "Design the UX/UI for Speecher using the 10 modern UI patterns from blueprint:
+   
+   1. Neumorphism - Dashboard quick generate panel
+   2. Glassmorphism - Modals and overlays
+   3. Brutalist/Industrial - Creator Studio
+   4. Card-Based Masonry - Asset libraries
+   5. Floating Action Pattern - Quick actions (New Project, Add Block)
+   6. Progressive Disclosure - Voice cloning wizard
+   7. Waveform Visualization - Audio preview
+   8. Command Palette - Studio keyboard shortcuts (Cmd+K)
+   9. Split-Screen Editing - Studio layout
+   10. Status-Driven UI - Job processing indicators
+   
+   Design System:
+   - CSS Variables for theming (design-tokens.css)
+   - CSS Modules for components (NO Tailwind)
+   - Mobile-first responsive design
+   - Dark mode support
+   
+   Key Screens to Design:
+   1. Landing Page (/)
+   2. Quick Job Pages (/quick/*)
+   3. Login/Signup (/login, /signup)
+   4. Dashboard (/dashboard)
+   5. Creator Studio (/studio/[projectId])
+   6. Settings (/settings/*)
+   7. Upgrade Page (/upgrade)
+   
+   For each screen:
+   - Layout structure (wireframe in text)
+   - Component hierarchy
+   - User interactions
+   - Responsive breakpoints
+   - Accessibility considerations (ARIA, keyboard navigation)"
+
+Expected Output:
+  - UI component specifications
+  - Layout descriptions
+  - Interaction patterns
+  - Design system documentation
+
+================================================================================
+5. PHASE 3: DEVELOPMENT SPRINT PLANNING (Epics → Stories)
+================================================================================
+
+WORKFLOW SEQUENCE:
+------------------
+
+STEP 5.1: Create Epics
+-----------------------
+Command: /create-epics-and-stories
+
+Instructions to AI:
+  "Break down the Speecher PRD into epics and user stories.
+   
+   EPIC STRUCTURE:
+   
+   Epic 1: Quick Jobs (No Auth)
+     - Quick Job: Text-to-Speech
+     - Quick Job: Audio Transcription
+     - Quick Job: Speech Translation
+     - Fingerprinting & Abuse Prevention
+     - Quick Job → Signup Conversion Flow
+   
+   Epic 2: Authentication & User Management
+     - User signup/login
+     - OAuth integration (Google, GitHub)
+     - Password reset
+     - Profile management
+     - Plan tier management
+   
+   Epic 3: Main Dashboard
+     - Quick generate panel
+     - Recent outputs display
+     - Usage stats (read-only)
+     - Voice/emotion selection
+     - Contextual upgrade prompts
+   
+   Epic 4: Creator Studio - Core
+     - Project creation/management
+     - Timeline block editor
+     - Block CRUD operations
+     - Voice settings per block
+     - Auto-save functionality
+   
+   Epic 5: Creator Studio - Advanced
+     - SSML text editor
+     - Asset management (upload, organize)
+     - Asset-to-block linking
+     - Pronunciation memory
+     - Waveform visualization
+   
+   Epic 6: AI Processing Pipeline
+     - Job queue system (Python/Celery)
+     - Text-to-Speech engine
+     - Voice cloning
+     - Speech translation
+     - Narration-to-video intelligence
+     - Real-time job status updates
+   
+   Epic 7: Plan Tiers & Billing
+     - Feature gating (backend + UI)
+     - Stripe integration
+     - Subscription management
+     - Usage tracking & limits
+     - Upgrade flows
+   
+   Epic 8: Asset & File Management
+     - File upload (Supabase Storage)
+     - Asset library
+     - Storage quota management
+     - Signed URLs for private files
+   
+   Epic 9: Voice Management
+     - Preset voice library
+     - Voice cloning workflow
+     - Consent management
+     - Voice profile CRUD
+   
+   Epic 10: Testing & Quality Assurance
+     - Unit tests (frontend)
+     - Integration tests (API)
+     - E2E tests (Playwright)
+     - Performance testing
+     - Security testing
+   
+   For each epic, create 5-15 user stories with:
+   - Story title
+   - User story format: As a [user], I want [goal], so that [benefit]
+   - Acceptance criteria (Given/When/Then)
+   - Story points (Fibonacci: 1, 2, 3, 5, 8, 13)
+   - Dependencies
+   - Technical notes"
+
+Expected Output:
+  - 10 epics
+  - 80-120 user stories
+  - Story priority ranking
+  - Dependency graph
+
+STEP 5.2: Sprint Planning
+--------------------------
+Command: /sprint-planning
+
+Instructions to AI:
+  "Plan the first 6 sprints (2-week sprints) for Speecher MVP.
+   
+   Sprint 1: Foundation (Week 1-2)
+   Goal: Set up project infrastructure and authentication
+   Stories:
+   - Project setup (Next.js, Supabase, Python service)
+   - Database schema implementation
+   - Authentication (signup, login, logout)
+   - Basic routing structure
+   - Design system foundations (CSS variables, tokens)
+   
+   Sprint 2: Quick Jobs (Week 3-4)
+   Goal: Enable first-time users to experience Speecher
+   Stories:
+   - Quick Job: Text-to-Speech
+   - Fingerprinting system
+   - Job processing (Python service setup)
+   - Result preview & download prompts
+   - Signup conversion flow
+   
+   Sprint 3: Dashboard Core (Week 5-6)
+   Goal: Authenticated users can generate speech from dashboard
+   Stories:
+   - Dashboard layout
+   - Quick generate panel
+   - Recent outputs display
+   - Basic voice/emotion selection
+   - Job status real-time updates
+   
+   Sprint 4: Creator Studio - Foundation (Week 7-8)
+   Goal: Studio workspace with timeline editing
+   Stories:
+   - Studio layout (3-column)
+   - Project CRUD
+   - Timeline block editor
+   - Block CRUD operations
+   - Voice settings per block
+   
+   Sprint 5: AI Pipeline & Studio Advanced (Week 9-10)
+   Goal: Advanced editing features and reliable AI processing
+   Stories:
+   - SSML editor
+   - Asset upload & management
+   - Voice cloning workflow
+   - Job queue optimization
+   - Error handling & retries
+   
+   Sprint 6: Billing & Launch Prep (Week 11-12)
+   Goal: Monetization and production readiness
+   Stories:
+   - Stripe integration
+   - Plan tier enforcement
+   - Usage tracking
+   - Performance optimization
+   - Security hardening
+   
+   For each sprint:
+   - Sprint goal
+   - Selected stories (20-30 story points)
+   - Sprint backlog
+   - Definition of Done
+   - Risk factors"
+
+Expected Output:
+  - 6 sprint plans
+  - Story allocation
+  - Sprint goals
+  - Velocity estimates
+
+================================================================================
+6. PHASE 4: IMPLEMENTATION (Story-by-Story Development)
+================================================================================
+
+WORKFLOW SEQUENCE FOR EACH STORY:
+----------------------------------
+
+STEP 6.1: Story Development Workflow
+-------------------------------------
+For each user story, follow this sequence:
+
+Command: /dev-story
+
+Instructions to AI:
+  "Implement the following user story:
+   
+   [PASTE USER STORY HERE]
+   
+   Example:
+   Story: As a first-time visitor, I want to convert text to speech without 
+          signing up, so that I can quickly test the platform's quality.
+   
+   Acceptance Criteria:
+   - Given I am on the Quick Job TTS page
+   - When I enter text (max 1000 chars) and click Generate
+   - Then I should see a processing indicator
+   - And receive an audio preview with watermark
+   - And be prompted to sign up to download
+   
+   Technical Requirements:
+   - Frontend: /app/(public)/quick/text-to-speech/page.tsx
+   - API: /app/api/jobs/create/route.ts
+   - Validation: Max 1000 chars, basic voice only
+   - Processing: Async job via Python service
+   - Result: 24-hour expiry, watermarked MP3
+   - Tracking: Store fingerprint to prevent reuse
+   
+   Implementation Guidelines:
+   1. Create UI components (use CSS Modules)
+   2. Implement form with validation (React Hook Form + Zod)
+   3. API route handler with authentication check
+   4. Job creation in Supabase
+   5. Real-time status updates via Supabase Realtime
+   6. Result display with upgrade prompt
+   7. Unit tests for components
+   8. Integration tests for API
+   
+   NO MOCK DATA. All data must flow through:
+   User Action → API → Supabase → Python Service → Supabase → UI"
+
+Expected Output:
+  - Complete implementation code
+  - Component files
+  - API routes
+  - Tests
+  - Documentation
+
+STEP 6.2: Code Review
+----------------------
+Command: /code-review
+
+Instructions to AI:
+  "Review the implemented story code for:
+   
+   1. Code Quality:
+      - TypeScript best practices
+      - Proper type definitions
+      - Error handling
+      - Edge case coverage
+   
+   2. Architecture Compliance:
+      - Follows blueprint architecture
+      - No mock data
+      - Proper separation of concerns
+      - Clean component structure
+   
+   3. Security:
+      - Input validation
+      - Authentication checks
+      - RLS enforcement
+      - No sensitive data exposure
+   
+   4. Performance:
+      - Efficient queries
+      - Proper caching
+      - Optimized re-renders
+      - Lazy loading where appropriate
+   
+   5. Testing:
+      - Unit test coverage >80%
+      - Integration tests for API
+      - E2E tests for critical flows
+   
+   6. Documentation:
+      - Code comments for complex logic
+      - README updates
+      - API documentation
+   
+   Provide:
+   - Issues found (severity: critical, major, minor)
+   - Suggestions for improvement
+   - Refactoring recommendations"
+
+Expected Output:
+  - Code review report
+  - Issue list with severity
+  - Improvement suggestions
+
+STEP 6.3: Iterate on Feedback
+------------------------------
+After code review, refine implementation:
+
+Command: /refactor
+
+Instructions to AI:
+  "Refactor the code based on code review feedback:
+   
+   [PASTE CODE REVIEW ISSUES]
+   
+   Focus on:
+   - Fixing critical and major issues
+   - Improving code readability
+   - Enhancing performance
+   - Adding missing tests
+   - Updating documentation
+   
+   Maintain:
+   - Existing functionality
+   - Test coverage
+   - API contracts"
+
+STEP 6.4: Story Completion
+---------------------------
+Once story is implemented and reviewed:
+
+1. Merge code to main branch
+2. Update sprint board (mark story as Done)
+3. Deploy to preview environment
+4. Stakeholder demo (if applicable)
+5. Move to next story
+
+================================================================================
+7. PHASE 5: TESTING & QUALITY ASSURANCE
+================================================================================
+
+WORKFLOW SEQUENCE:
+------------------
+
+STEP 7.1: Unit Testing
+-----------------------
+Command: QA (from Quinn, built-in BMAD agent)
+
+Instructions to AI:
+  "Generate unit tests for Speecher components:
+   
+   Frontend Components:
+   - Button, Card, Modal components
+   - Form components (Input, Select, TextArea)
+   - Dashboard quick generate panel
+   - Studio timeline editor
+   - Job status indicators
+   
+   API Routes:
+   - /api/jobs/create
+   - /api/projects/[id]
+   - /api/assets/upload
+   
+   Utilities:
+   - Validation schemas (Zod)
+   - Helper functions
+   - Hooks (useJob, useProject)
+   
+   Test Framework: Jest + React Testing Library
+   Coverage Target: >80%
+   
+   Test Cases:
+   - Happy path (expected behavior)
+   - Error scenarios (validation failures, network errors)
+   - Edge cases (empty states, max limits)
+   - Accessibility (keyboard navigation, screen readers)"
+
+STEP 7.2: Integration Testing
+------------------------------
+Command: QA
+
+Instructions to AI:
+  "Create integration tests for Speecher API:
+   
+   Test Suites:
+   1. Authentication Flow
+      - User signup → login → logout
+      - OAuth flow
+      - Password reset
+   
+   2. Job Processing Flow
+      - Create job → Process → Get result
+      - Job cancellation
+      - Job expiry
+   
+   3. Project Management Flow
+      - Create project → Add blocks → Update → Delete
+      - Project sharing (future)
+   
+   4. Asset Management Flow
+      - Upload asset → Link to block → Delete
+   
+   5. Billing Flow
+      - Subscription creation
+      - Upgrade/downgrade
+      - Cancellation
+   
+   Test Tools: Supertest or Playwright API testing
+   
+   Include:
+   - Database seeding (test data)
+   - Cleanup after tests
+   - Mocking external services (Stripe, Python service)"
+
+STEP 7.3: End-to-End Testing (Optional with TEA Module)
+--------------------------------------------------------
+Command: TEA (Test Architect module, if installed)
+
+Instructions to AI:
+  "Create E2E test scenarios for critical user journeys:
+   
+   Journey 1: First-Time Visitor → Quick Job → Signup
+   - Visit landing page
+   - Navigate to Quick TTS
+   - Enter text and generate
+   - Attempt to download (blocked)
+   - Sign up
+   - Access dashboard
+   
+   Journey 2: Free User → Dashboard → Generate → Upgrade
+   - Login as free user
+   - Generate speech from dashboard
+   - Hit usage limit
+   - View upgrade prompt
+   - Navigate to pricing
+   - Upgrade to Creator Lite
+   
+   Journey 3: Pro User → Studio → Create Project → Export
+   - Login as pro user
+   - Create new project
+   - Add narration blocks
+   - Configure voices
+   - Generate audio
+   - Export project
+   
+   Test Tool: Playwright
+   
+   Include:
+   - Screenshots on failure
+   - Video recording of tests
+   - Performance metrics (Core Web Vitals)
+   - Mobile viewport testing"
+
+STEP 7.4: Performance Testing (Optional with TEA Module)
+---------------------------------------------------------
+Command: TEA
+
+Instructions to AI:
+  "Design performance tests for Speecher:
+   
+   Load Testing:
+   - Concurrent users: 100, 500, 1000
+   - Request rate: 10 req/s, 50 req/s, 100 req/s
+   - Duration: 5 minutes, 30 minutes
+   
+   Stress Testing:
+   - Find breaking point (max concurrent jobs)
+   - Recovery testing (after overload)
+   
+   Metrics to Measure:
+   - Response times (p50, p95, p99)
+   - Error rate
+   - Database connection pool usage
+   - Python worker queue length
+   - Memory usage
+   
+   Tools: k6 or Artillery
+   
+   Scenarios:
+   1. Quick Job burst (100 users in 1 minute)
+   2. Dashboard usage (500 users over 30 minutes)
+   3. Studio editing (50 concurrent sessions)
+   4. Job processing (100 jobs queued)"
+
+================================================================================
+8. PHASE 6: DEPLOYMENT & LAUNCH
+================================================================================
+
+DEPLOYMENT SEQUENCE:
+--------------------
+
+STEP 8.1: Pre-Deployment Checklist
+-----------------------------------
+□ All tests passing (unit, integration, E2E)
+□ Code review completed
+□ Documentation updated
+□ Environment variables configured
+□ Database migrations ready
+□ Monitoring setup (Sentry, PostHog)
+□ Backup strategy in place
+□ Rollback plan documented
+□ Security audit completed
+□ Performance benchmarks met
+
+STEP 8.2: Deploy Python Service (Hostinger VPS)
+------------------------------------------------
+SSH into VPS:
+  ssh user@your-vps-ip
+
+Deploy steps:
+  cd /opt/speecher-python
+  git pull origin main
+  docker-compose build
+  docker-compose up -d
+  docker-compose logs -f  # Monitor startup
+
+Verify:
+  curl http://localhost:8000/health
+  # Expected: {"status": "healthy"}
+
+STEP 8.3: Deploy Next.js Frontend (Vercel)
+-------------------------------------------
+Push to main branch:
+  git push origin main
+
+Vercel auto-deploys. Monitor:
+  - Build logs in Vercel dashboard
+  - Preview deployment (if PR)
+  - Production deployment (if main branch)
+
+Verify:
+  - Visit https://speecher.vercel.app
+  - Test critical flows
+  - Check error tracking (Sentry)
+
+STEP 8.4: Post-Deployment Verification
+---------------------------------------
+□ Health checks passing
+  - Frontend: /api/health
+  - Python service: /health
+  - Database: Supabase dashboard
+
+□ Authentication working
+  - Signup new user
+  - Login existing user
+  - OAuth flow (Google, GitHub)
+
+□ Quick Jobs functional
+  - Text-to-Speech generation
+  - Fingerprinting preventing reuse
+
+□ Dashboard accessible
+  - Quick generate working
+  - Recent outputs displaying
+  - Usage stats accurate
+
+□ Creator Studio (paid users)
+  - Project creation
+  - Timeline editing
+  - Job processing
+
+□ Billing operational
+  - Stripe checkout flow
+  - Subscription activation
+  - Feature gating enforcement
+
+□ Monitoring active
+  - Error tracking (Sentry)
+  - Analytics (PostHog)
+  - Logs aggregation
+
+STEP 8.5: Launch Communication
+-------------------------------
+1. Internal announcement (team)
+2. Beta users invitation (if applicable)
+3. Public launch (Product Hunt, social media)
+4. Support channels ready (email, Discord)
+5. Documentation published (help center)
+
+================================================================================
+9. BMAD AGENTS REFERENCE
+================================================================================
+
+CORE AGENTS IN BMAD-METHOD:
+---------------------------
+
+1. PRODUCT MANAGER (PM)
+   - Workflow: /product-brief, /create-prd
+   - Use: Define product vision, requirements, user stories
+   - When: Discovery phase, feature planning
+
+2. ARCHITECT
+   - Workflow: /create-architecture, /design-database, /design-api
+   - Use: System design, technical decisions, data modeling
+   - When: Architecture phase, technical planning
+
+3. DEVELOPER
+   - Workflow: /dev-story, /implement-feature
+   - Use: Code implementation, feature development
+   - When: Development phase, story implementation
+
+4. UX DESIGNER
+   - Workflow: /design-ux, /create-wireframes
+   - Use: User experience, interface design, usability
+   - When: Design phase, UI/UX planning
+
+5. SCRUM MASTER
+   - Workflow: /sprint-planning, /daily-standup, /sprint-review
+   - Use: Agile process management, sprint coordination
+   - When: Sprint planning, retrospectives
+
+6. QA (Quinn - Built-in)
+   - Workflow: QA (Automate)
+   - Use: Test automation, quality assurance
+   - When: Testing phase, continuous quality
+
+7. DEVOPS
+   - Workflow: /setup-ci-cd, /configure-deployment
+   - Use: Infrastructure, deployment, monitoring
+   - When: DevOps setup, deployment planning
+
+8. DATA ANALYST
+   - Workflow: /analyze-metrics, /create-dashboard
+   - Use: Analytics, metrics, data insights
+   - When: Post-launch, optimization
+
+9. SECURITY EXPERT
+   - Workflow: /security-audit, /assess-vulnerabilities
+   - Use: Security review, compliance, threat modeling
+   - When: Pre-launch, security hardening
+
+10. TECHNICAL WRITER
+    - Workflow: /create-docs, /api-documentation
+    - Use: Documentation, guides, API specs
+    - When: Ongoing, documentation needs
+
+OPTIONAL AGENTS (with TEA Module):
+----------------------------------
+
+11. TEST ARCHITECT
+    - Workflow: TEA workflows (8 specialized)
+    - Use: Test strategy, risk-based testing, quality gates
+    - When: Enterprise-grade testing needs
+
+OPTIONAL AGENTS (with CIS Module):
+----------------------------------
+
+12. INNOVATION STRATEGIST
+    - Workflow: /brainstorm, /ideate
+    - Use: Creative thinking, problem-solving
+    - When: Feature ideation, innovation sessions
+
+13. DESIGN THINKER
+    - Workflow: /empathy-map, /user-journey
+    - Use: User-centered design, journey mapping
+    - When: User research, experience design
+
+================================================================================
+10. WORKFLOW SEQUENCES
+================================================================================
+
+RECOMMENDED WORKFLOW PATHS FOR SPEECHER:
+-----------------------------------------
+
+PATH 1: QUICK START (Simple Features, Bug Fixes)
+-------------------------------------------------
+Use this for: Small features, bug fixes, minor enhancements
+
+Sequence:
+1. /quick-spec (analyze codebase, create tech spec)
+2. /dev-story (implement)
+3. /code-review (validate quality)
+
+Time: 1-3 days per feature
+
+PATH 2: FULL PLANNING (MVP, Major Features)
+--------------------------------------------
+Use this for: Speecher MVP, major feature sets, complex functionality
+
+Sequence:
+1. /product-brief (define vision)
+2. /create-prd (detailed requirements)
+3. /create-architecture (system design)
+4. /create-epics-and-stories (break down work)
+5. /sprint-planning (organize sprints)
+6. /dev-story (implement each story)
+7. /code-review (validate each story)
+8. QA (test automation)
+9. TEA workflows (if installed, for comprehensive testing)
+
+Time: 8-12 weeks for MVP
+
+PATH 3: INNOVATION (New Features, Experiments)
+-----------------------------------------------
+Use this for: New feature exploration, competitive differentiation
+
+Sequence (with CIS Module):
+1. /brainstorm (generate ideas)
+2. /design-thinking (user-centered approach)
+3. /product-brief (formalize concept)
+4. /create-prd (detailed spec)
+5. /create-architecture (technical design)
+6. /dev-story (prototype)
+7. /code-review (validate)
+
+Time: 2-4 weeks per experiment
+
+================================================================================
+11. BEST PRACTICES & CONVENTIONS
+================================================================================
+
+BMAD USAGE BEST PRACTICES:
+---------------------------
+
+1. ALWAYS START WITH DISCOVERY
+   - Never jump to coding without /product-brief or /quick-spec
+   - Understand the problem before implementing
+
+2. USE THE RIGHT AGENT FOR THE JOB
+   - PM for requirements
+   - Architect for design
+   - Developer for implementation
+   - QA for testing
+
+3. MAINTAIN CONTEXT
+   - BMAD stores project context in .bmad/context/
+   - Review context before major decisions
+   - Update context when requirements change
+
+4. FOLLOW THE WORKFLOW ORDER
+   - Don't skip phases (Discovery → Architecture → Development)
+   - Each phase builds on previous outputs
+
+5. VALIDATE AT EACH STEP
+   - Code review after implementation
+   - QA after features complete
+   - Security audit before launch
+
+6. DOCUMENT AS YOU GO
+   - Update README
+   - Document API changes
+   - Keep architecture diagrams current
+
+7. USE /bmad-help LIBERALLY
+   - When stuck, ask for guidance
+   - When unsure what's next
+   - When planning new features
+
+SPEECHER-SPECIFIC CONVENTIONS:
+------------------------------
+
+1. NO MOCK DATA RULE
+   - Absolutely no hardcoded data
+   - All data from Supabase
+   - Dynamic retrieval only
+
+2. CSS CONVENTIONS
+   - Use CSS Modules (.module.css)
+   - Design tokens in design-tokens.css
+   - NO Tailwind CSS
+   - Mobile-first responsive design
+
+3. COMPONENT STRUCTURE
+   - One component per file
+   - Co-locate styles (.module.css)
+   - Barrel exports (index.ts)
+   - TypeScript strict mode
+
+4. API CONVENTIONS
+   - Zod schemas for validation
+   - Proper error handling (try/catch)
+   - Rate limiting on all routes
+   - Authentication checks
+
+5. DATABASE CONVENTIONS
+   - RLS enabled on all user tables
+   - Timestamps (created_at, updated_at)
+   - Soft deletes where appropriate
+   - Indexes on foreign keys
+
+6. TESTING CONVENTIONS
+   - Unit tests co-located with components
+   - Integration tests in __tests__/integration/
+   - E2E tests in __tests__/e2e/
+   - Coverage >80%
+
+7. PYTHON SERVICE CONVENTIONS
+   - Celery for all async jobs
+   - Pydantic for validation
+   - Type hints required
+   - Error handling with retries
+
+8. SECURITY CONVENTIONS
+   - Input validation on all endpoints
+   - Signed URLs for private files
+   - CORS configuration
+   - CSP headers
+
+GIT CONVENTIONS:
+----------------
+
+Branch Naming:
+  feature/EPIC-123-quick-jobs
+  bugfix/AUTH-45-login-redirect
+  refactor/DB-67-optimize-queries
+
+Commit Messages:
+  feat(quick-jobs): implement TTS quick job
+  fix(auth): resolve login redirect loop
+  refactor(db): optimize project query performance
+  test(api): add integration tests for jobs API
+  docs(readme): update deployment instructions
+
+Pull Request Template:
+  ## Description
+  Brief description of changes
+  
+  ## Type of Change
+  - [ ] Bug fix
+  - [ ] New feature
+  - [ ] Breaking change
+  - [ ] Documentation update
+  
+  ## Testing
+  - [ ] Unit tests added/updated
+  - [ ] Integration tests passing
+  - [ ] E2E tests passing
+  
+  ## Checklist
+  - [ ] Code follows style guidelines
+  - [ ] Self-review completed
+  - [ ] Documentation updated
+  - [ ] No console warnings/errors
+
+SPRINT CONVENTIONS:
+-------------------
+
+Sprint Duration: 2 weeks
+
+Sprint Ceremony Schedule:
+  - Monday: Sprint Planning (2 hours)
+  - Daily: Standup (15 minutes)
+  - Friday Week 2: Sprint Review (1 hour)
+  - Friday Week 2: Retrospective (1 hour)
+
+Story Points (Fibonacci):
+  1 point  = 1-2 hours (simple bug fix)
+  2 points = 3-4 hours (small feature)
+  3 points = 1 day (medium feature)
+  5 points = 2-3 days (complex feature)
+  8 points = 1 week (epic-level feature)
+  13 points = Too large, split into smaller stories
+
+Definition of Done:
+  □ Code implemented
+  □ Unit tests written (>80% coverage)
+  □ Code reviewed and approved
+  □ Integration tests passing
+  □ Documentation updated
+  □ Deployed to preview environment
+  □ Stakeholder demo completed
+  □ Story accepted by PM
+
+MONITORING & OBSERVABILITY:
+----------------------------
+
+Error Tracking (Sentry):
+  - Frontend errors captured
+  - API errors logged
+  - Python service errors tracked
+  - User feedback widget
+
+Analytics (PostHog):
+  - User events tracked
+  - Feature usage measured
+  - Conversion funnels monitored
+  - A/B tests conducted
+
+Performance Monitoring:
+  - Core Web Vitals (Vercel)
+  - API response times
+  - Database query performance
+  - Job processing times
+
+Logs:
+  - Vercel function logs
+  - Python service logs (Docker)
+  - Supabase logs
+  - Structured logging (JSON)
+
+Alerts:
+  - Error rate >1%
+  - API latency >2s
+  - Job queue >100
+  - Disk space <20%
+  - Database connections >80%
+
+================================================================================
+FINAL NOTES
+================================================================================
+
+This BMAD instruction set provides a complete roadmap for building Speecher 
+using the BMAD-METHOD framework. Remember:
+
+1. Start with /bmad-help to understand your current project state
+2. Follow the workflow sequences appropriate for your task
+3. Use the right agent for each phase
+4. Validate at every step (code review, testing, security)
+5. Maintain the "no mock data" rule throughout
+6. Document as you go
+7. Deploy incrementally (sprint by sprint)
+
+The BMAD framework adapts to your project scale - use Quick Start for small 
+tasks, Full Planning for the MVP, and Innovation paths for new features.
+
+For questions or clarification, always ask: /bmad-help [your question]
+
+Good luck building Speecher! 🎙️🚀
+
+================================================================================
+END OF BMAD INSTRUCTIONS
+================================================================================
